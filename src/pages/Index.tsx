@@ -23,7 +23,9 @@ import {
   Terminal,
   Activity,
   Zap,
-  Settings
+  Settings,
+  GraduationCap,
+  Briefcase
 } from "lucide-react";
 
 const Index = () => {
@@ -60,6 +62,47 @@ const Index = () => {
       status: "Deployed",
       nodes: 15,
       uptime: "99.8%"
+    }
+  ];
+
+  const education = [
+    {
+      degree: "Bachelor of Science in Network Engineering",
+      institution: "San Francisco State University",
+      year: "2018-2022",
+      status: "Completed",
+      gpa: "3.8/4.0"
+    },
+    {
+      degree: "Associate Degree in Computer Networking",
+      institution: "City College of San Francisco",
+      year: "2016-2018",
+      status: "Completed",
+      gpa: "3.9/4.0"
+    }
+  ];
+
+  const experience = [
+    {
+      position: "Senior Network Engineer",
+      company: "TechCorp Solutions",
+      period: "2022-Present",
+      status: "Current",
+      responsibilities: ["Design and implement enterprise network infrastructure", "Manage SD-WAN deployments", "Lead network security initiatives"]
+    },
+    {
+      position: "Network Engineer",
+      company: "DataFlow Networks",
+      period: "2020-2022",
+      status: "Completed",
+      responsibilities: ["Configure and maintain Cisco equipment", "Troubleshoot network issues", "Implement QoS policies"]
+    },
+    {
+      position: "Junior Network Technician",
+      company: "NetSys Inc.",
+      period: "2018-2020",
+      status: "Completed",
+      responsibilities: ["Monitor network performance", "Assist with hardware installations", "Document network configurations"]
     }
   ];
 
@@ -130,11 +173,11 @@ const Index = () => {
           </Button>
         </div>
 
-        {/* Skills Grid */}
+        {/* Skills and Technologies */}
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-6 eve-blue-text flex items-center gap-2">
             <Activity className="h-6 w-6" />
-            System Resources & Skills
+            Skills and Technologies
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {skills.map((skill, index) => (
@@ -158,47 +201,108 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Projects & Topology */}
-        <Tabs defaultValue="topology" className="mb-8">
-          <TabsList className="grid w-full grid-cols-2 bg-secondary/50">
-            <TabsTrigger value="topology" className="font-mono">Network Topology</TabsTrigger>
-            <TabsTrigger value="certs" className="font-mono">Certifications</TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="topology" className="space-y-4 mt-6">
-            <h3 className="text-xl font-bold eve-blue-text flex items-center gap-2">
-              <Network className="h-5 w-5" />
-              Active Network Projects
-            </h3>
-            {projects.map((project, index) => (
-              <Card key={index} className="eve-terminal border-primary/30 hover:border-primary/50 transition-colors">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
+        {/* Projects */}
+        <div className="mb-8">
+          <h3 className="text-xl font-bold eve-blue-text flex items-center gap-2 mb-6">
+            <Network className="h-5 w-5" />
+            Active Network Projects
+          </h3>
+          {projects.map((project, index) => (
+            <Card key={index} className="eve-terminal border-primary/30 hover:border-primary/50 transition-colors mb-4">
+              <CardHeader>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle className="text-primary font-mono">{project.title}</CardTitle>
+                    <CardDescription className="mt-2 text-muted-foreground">
+                      {project.description}
+                    </CardDescription>
+                  </div>
+                  <div className="text-right text-sm space-y-1">
+                    <div className="text-green-400 font-mono">● {project.status}</div>
+                    <div className="text-blue-400 font-mono">{project.nodes} nodes</div>
+                    <div className="text-green-400 font-mono">{project.uptime}</div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech, techIndex) => (
+                    <Badge key={techIndex} variant="outline" className="border-primary/50 text-primary font-mono text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Education */}
+        <div className="mb-8">
+          <h3 className="text-xl font-bold eve-blue-text flex items-center gap-2 mb-6">
+            <GraduationCap className="h-5 w-5" />
+            Education
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            {education.map((edu, index) => (
+              <Card key={index} className="eve-terminal border-primary/30">
+                <CardContent className="p-4">
+                  <div className="flex justify-between items-start mb-2">
                     <div>
-                      <CardTitle className="text-primary font-mono">{project.title}</CardTitle>
-                      <CardDescription className="mt-2 text-muted-foreground">
-                        {project.description}
-                      </CardDescription>
+                      <div className="font-mono font-bold text-primary">{edu.degree}</div>
+                      <div className="text-sm text-muted-foreground">{edu.institution}</div>
+                      <div className="text-sm text-muted-foreground">{edu.year}</div>
                     </div>
-                    <div className="text-right text-sm space-y-1">
-                      <div className="text-green-400 font-mono">● {project.status}</div>
-                      <div className="text-blue-400 font-mono">{project.nodes} nodes</div>
-                      <div className="text-green-400 font-mono">{project.uptime}</div>
-                    </div>
+                    <div className="text-green-400 font-mono text-sm">● {edu.status}</div>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="outline" className="border-primary/50 text-primary font-mono text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
+                  <div className="text-sm text-blue-400 font-mono">GPA: {edu.gpa}</div>
                 </CardContent>
               </Card>
             ))}
-          </TabsContent>
+          </div>
+        </div>
+
+        {/* Experience */}
+        <div className="mb-8">
+          <h3 className="text-xl font-bold eve-blue-text flex items-center gap-2 mb-6">
+            <Briefcase className="h-5 w-5" />
+            Professional Experience
+          </h3>
+          {experience.map((exp, index) => (
+            <Card key={index} className="eve-terminal border-primary/30 mb-4">
+              <CardHeader>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle className="text-primary font-mono">{exp.position}</CardTitle>
+                    <CardDescription className="text-muted-foreground">
+                      {exp.company} • {exp.period}
+                    </CardDescription>
+                  </div>
+                  <div className={`font-mono text-sm ${exp.status === 'Current' ? 'text-green-400' : 'text-blue-400'}`}>
+                    ● {exp.status}
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-1 text-sm text-muted-foreground">
+                  {exp.responsibilities.map((resp, respIndex) => (
+                    <li key={respIndex} className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Certifications & Connect */}
+        <Tabs defaultValue="certs" className="mb-8">
+          <TabsList className="grid w-full grid-cols-2 bg-secondary/50">
+            <TabsTrigger value="certs" className="font-mono">Certifications</TabsTrigger>
+            <TabsTrigger value="connect" className="font-mono">Connect</TabsTrigger>
+          </TabsList>
           
           <TabsContent value="certs" className="space-y-4 mt-6">
             <h3 className="text-xl font-bold eve-blue-text flex items-center gap-2">
@@ -221,57 +325,58 @@ const Index = () => {
               ))}
             </div>
           </TabsContent>
+          
+          <TabsContent value="connect" className="space-y-4 mt-6">
+            <Card className="eve-terminal border-primary/30">
+              <CardHeader>
+                <CardTitle className="eve-blue-text font-mono flex items-center gap-2">
+                  <Terminal className="h-5 w-5" />
+                  Connection Parameters
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-sm">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <span className="font-mono text-muted-foreground">email:</span>
+                    </div>
+                    <div className="font-mono text-primary">engineer@network.lab</div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-sm">
+                      <Phone className="h-4 w-4 text-primary" />
+                      <span className="font-mono text-muted-foreground">phone:</span>
+                    </div>
+                    <div className="font-mono text-primary">+1.555.NET.WORK</div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-sm">
+                      <MapPin className="h-4 w-4 text-primary" />
+                      <span className="font-mono text-muted-foreground">location:</span>
+                    </div>
+                    <div className="font-mono text-primary">San Francisco, CA</div>
+                  </div>
+                </div>
+                
+                <div className="flex gap-4 mt-6 pt-4 border-t border-primary/20">
+                  <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
+                    <Github className="mr-2 h-4 w-4" />
+                    GitHub
+                  </Button>
+                  <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
+                    <Linkedin className="mr-2 h-4 w-4" />
+                    LinkedIn
+                  </Button>
+                  <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Lab Portal
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
         </Tabs>
-
-        {/* Contact Terminal */}
-        <Card className="eve-terminal border-primary/30">
-          <CardHeader>
-            <CardTitle className="eve-blue-text font-mono flex items-center gap-2">
-              <Terminal className="h-5 w-5" />
-              Connection Parameters
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm">
-                  <Mail className="h-4 w-4 text-primary" />
-                  <span className="font-mono text-muted-foreground">email:</span>
-                </div>
-                <div className="font-mono text-primary">engineer@network.lab</div>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm">
-                  <Phone className="h-4 w-4 text-primary" />
-                  <span className="font-mono text-muted-foreground">phone:</span>
-                </div>
-                <div className="font-mono text-primary">+1.555.NET.WORK</div>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm">
-                  <MapPin className="h-4 w-4 text-primary" />
-                  <span className="font-mono text-muted-foreground">location:</span>
-                </div>
-                <div className="font-mono text-primary">San Francisco, CA</div>
-              </div>
-            </div>
-            
-            <div className="flex gap-4 mt-6 pt-4 border-t border-primary/20">
-              <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
-                <Github className="mr-2 h-4 w-4" />
-                GitHub
-              </Button>
-              <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
-                <Linkedin className="mr-2 h-4 w-4" />
-                LinkedIn
-              </Button>
-              <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                Lab Portal
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );
