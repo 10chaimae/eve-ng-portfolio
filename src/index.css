@@ -3,48 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Cisco Packet Tracer inspired design system */
+/* Ubuntu inspired design system */
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 212 84% 10%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 212 84% 10%;
+    --card-foreground: 0 0% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 212 84% 10%;
+    --popover-foreground: 0 0% 13%;
 
-    --primary: 213 94% 68%;
+    --primary: 17 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 95%;
-    --secondary-foreground: 212 84% 10%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 13%;
 
-    --muted: 210 40% 95%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 213 94% 68%;
+    --accent: 17 100% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 213 94% 68%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 17 100% 50%;
 
     --radius: 0.375rem;
 
-    --sidebar-background: 210 20% 98%;
-    --sidebar-foreground: 215 16% 47%;
-    --sidebar-primary: 213 94% 68%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 45%;
+    --sidebar-primary: 17 100% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 95%;
-    --sidebar-accent-foreground: 212 84% 10%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 213 94% 68%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 13%;
+    --sidebar-border: 0 0% 89%;
+    --sidebar-ring: 17 100% 50%;
   }
 }
 
@@ -54,153 +54,254 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    @apply bg-background text-foreground;
+    font-family: 'Ubuntu', 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 50%, #fafafa 100%);
     background-attachment: fixed;
   }
 }
 
 @layer components {
-  .pt-toolbar {
-    background: linear-gradient(180deg, #ffffff 0%, #e8f4fd 50%, #d1e7f8 100%);
-    border: 1px solid #c3d9f1;
-    box-shadow: 
-      0 2px 4px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  .ubuntu-header {
+    background: linear-gradient(90deg, #e95420 0%, #dd4814 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(233, 84, 32, 0.3);
   }
   
-  .pt-panel {
-    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-    border: 1px solid #c3d9f1;
-    box-shadow: 
-      0 1px 3px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  }
-  
-  .pt-button {
-    background: linear-gradient(180deg, #ffffff 0%, #e8f4fd 50%, #d1e7f8 100%);
-    border: 1px solid #a8c8e4;
-    box-shadow: 
-      0 1px 2px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    transition: all 0.2s ease;
-  }
-  
-  .pt-button:hover {
-    background: linear-gradient(180deg, #f0f8ff 0%, #dbeafe 50%, #bfdbfe 100%);
-    border-color: #93c5fd;
-  }
-  
-  .pt-button:active {
-    background: linear-gradient(180deg, #dbeafe 0%, #93c5fd 50%, #60a5fa 100%);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-  }
-  
-  .pt-status-bar {
-    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
-    border-top: 1px solid #cbd5e1;
-    border-bottom: 1px solid #94a3b8;
-  }
-  
-  .pt-device-icon {
-    background: linear-gradient(145deg, #ffffff, #f0f4f8);
-    border: 1px solid #c3d9f1;
-    border-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  }
-  
-  .pt-network-line {
-    stroke: #3b82f6;
-    stroke-width: 2;
-    stroke-dasharray: none;
-  }
-  
-  .pt-network-line.active {
-    stroke: #10b981;
-    animation: pulse-line 2s infinite;
-  }
-  
-  .pt-workspace {
+  .ubuntu-panel {
     background: #ffffff;
-    background-image: 
-      radial-gradient(circle at 20px 20px, #e2e8f0 1px, transparent 1px);
-    background-size: 20px 20px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.08),
+      0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
   }
   
-  .pt-title-bar {
-    background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
+  .ubuntu-panel:hover {
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.12),
+      0 2px 4px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+  
+  .ubuntu-button {
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+    border: 1px solid #d4d4d4;
+    border-radius: 6px;
+    color: #2c2c2c;
+    transition: all 0.2s ease;
+    font-weight: 400;
+  }
+  
+  .ubuntu-button:hover {
+    background: linear-gradient(180deg, #f5f5f5 0%, #ebebeb 100%);
+    border-color: #b8b8b8;
+    transform: translateY(-1px);
+  }
+  
+  .ubuntu-button:active {
+    background: linear-gradient(180deg, #ebebeb 0%, #d4d4d4 100%);
+    transform: translateY(0);
+  }
+  
+  .ubuntu-button.primary {
+    background: linear-gradient(180deg, #e95420 0%, #dd4814 100%);
+    border-color: #dd4814;
+    color: white;
+  }
+  
+  .ubuntu-button.primary:hover {
+    background: linear-gradient(180deg, #dd4814 0%, #d1440f 100%);
+    border-color: #d1440f;
+  }
+  
+  .ubuntu-dock {
+    background: rgba(46, 52, 54, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  .ubuntu-dock-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .ubuntu-dock-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+  }
+  
+  .ubuntu-dock-item.active {
+    background: rgba(233, 84, 32, 0.3);
+    border-color: rgba(233, 84, 32, 0.5);
+  }
+  
+  .ubuntu-topbar {
+    background: rgba(46, 52, 54, 0.98);
+    backdrop-filter: blur(10px);
     color: white;
     height: 32px;
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    font-size: 13px;
-    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  .pt-menu-bar {
-    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-    border-bottom: 1px solid #cbd5e1;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    padding: 0 8px;
+  .ubuntu-window {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.12),
+      0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e6e6e6;
   }
   
-  .pt-connection-status {
-    display: inline-flex;
+  .ubuntu-window-header {
+    background: linear-gradient(180deg, #f7f7f7 0%, #eeeeee 100%);
+    border-bottom: 1px solid #d4d4d4;
+    border-radius: 8px 8px 0 0;
+    height: 40px;
+    display: flex;
     align-items: center;
-    gap: 4px;
+    padding: 0 16px;
+  }
+  
+  .ubuntu-window-controls {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .ubuntu-window-control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .ubuntu-window-control.close {
+    background: #e95420;
+  }
+  
+  .ubuntu-window-control.minimize {
+    background: #f99b11;
+  }
+  
+  .ubuntu-window-control.maximize {
+    background: #73a839;
+  }
+  
+  .ubuntu-sidebar {
+    background: #f7f7f7;
+    border-right: 1px solid #e6e6e6;
+  }
+  
+  .ubuntu-sidebar-item {
+    background: transparent;
+    border-radius: 6px;
+    margin: 2px 8px;
+    padding: 8px 12px;
+    transition: all 0.2s ease;
+    color: #2c2c2c;
+  }
+  
+  .ubuntu-sidebar-item:hover {
+    background: rgba(233, 84, 32, 0.1);
+    color: #e95420;
+  }
+  
+  .ubuntu-sidebar-item.active {
+    background: #e95420;
+    color: white;
+  }
+  
+  .ubuntu-progress {
+    background: #e6e6e6;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .ubuntu-progress-bar {
+    background: linear-gradient(90deg, #e95420 0%, #f99b11 100%);
+    transition: width 0.3s ease;
+  }
+  
+  .ubuntu-badge {
+    background: rgba(233, 84, 32, 0.1);
+    color: #e95420;
+    border: 1px solid rgba(233, 84, 32, 0.2);
+    border-radius: 16px;
     padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
   }
   
-  .pt-connection-status.connected {
-    background: #dcfce7;
-    color: #166534;
-    border: 1px solid #bbf7d0;
+  .ubuntu-badge.success {
+    background: rgba(115, 168, 57, 0.1);
+    color: #73a839;
+    border-color: rgba(115, 168, 57, 0.2);
   }
   
-  .pt-connection-status.disconnected {
-    background: #fef2f2;
-    color: #991b1b;
-    border: 1px solid #fecaca;
+  .ubuntu-badge.warning {
+    background: rgba(249, 155, 17, 0.1);
+    color: #f99b11;
+    border-color: rgba(249, 155, 17, 0.2);
   }
   
-  .pt-connection-status.partial {
-    background: #fefce8;
-    color: #a16207;
-    border: 1px solid #fde68a;
+  .ubuntu-badge.error {
+    background: rgba(204, 0, 0, 0.1);
+    color: #cc0000;
+    border-color: rgba(204, 0, 0, 0.2);
+  }
+  
+  .ubuntu-terminal {
+    background: #2c2c2c;
+    color: #f5f5f5;
+    border-radius: 8px;
+    font-family: 'Ubuntu Mono', 'Courier New', monospace;
+  }
+  
+  .ubuntu-workspace {
+    background: #fafafa;
+    background-image: 
+      radial-gradient(circle at 40px 40px, rgba(233, 84, 32, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }
 
-@keyframes pulse-line {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+/* Ubuntu animations */
+@keyframes ubuntu-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(233, 84, 32, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(233, 84, 32, 0.6); }
 }
 
-/* Custom scrollbar to match Packet Tracer */
+.ubuntu-glow {
+  animation: ubuntu-glow 2s ease-in-out infinite;
+}
+
+/* Ubuntu scrollbar */
 ::-webkit-scrollbar {
-  width: 16px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
+  background: #f7f7f7;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
-  border: 1px solid #94a3b8;
-  border-radius: 8px;
+  background: linear-gradient(180deg, #e95420 0%, #dd4814 100%);
+  border-radius: 6px;
+  border: 2px solid #f7f7f7;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #cbd5e1 0%, #94a3b8 100%);
+  background: linear-gradient(180deg, #dd4814 0%, #d1440f 100%);
 }
 
 ::-webkit-scrollbar-corner {
-  background: #f1f5f9;
+  background: #f7f7f7;
 }
