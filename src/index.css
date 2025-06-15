@@ -3,48 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ubuntu inspired design system */
+/* Kali Linux inspired design system */
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 13%;
+    --background: 210 20% 8%;
+    --foreground: 120 20% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 13%;
+    --card: 210 20% 12%;
+    --card-foreground: 120 20% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 13%;
+    --popover: 210 20% 12%;
+    --popover-foreground: 120 20% 95%;
 
-    --primary: 17 100% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 120 100% 40%;
+    --primary-foreground: 210 20% 8%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 13%;
+    --secondary: 210 15% 16%;
+    --secondary-foreground: 120 20% 95%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 210 15% 16%;
+    --muted-foreground: 120 10% 60%;
 
-    --accent: 17 100% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 120 100% 40%;
+    --accent-foreground: 210 20% 8%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 89%;
-    --input: 0 0% 89%;
-    --ring: 17 100% 50%;
+    --border: 210 20% 20%;
+    --input: 210 20% 20%;
+    --ring: 120 100% 40%;
 
-    --radius: 0.375rem;
+    --radius: 0.25rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 45%;
-    --sidebar-primary: 17 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 13%;
-    --sidebar-border: 0 0% 89%;
-    --sidebar-ring: 17 100% 50%;
+    --sidebar-background: 210 20% 6%;
+    --sidebar-foreground: 120 10% 60%;
+    --sidebar-primary: 120 100% 40%;
+    --sidebar-primary-foreground: 210 20% 8%;
+    --sidebar-accent: 210 15% 16%;
+    --sidebar-accent-foreground: 120 20% 95%;
+    --sidebar-border: 210 20% 20%;
+    --sidebar-ring: 120 100% 40%;
   }
 }
 
@@ -55,253 +55,329 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Ubuntu', 'Segoe UI', system-ui, sans-serif;
-    background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 50%, #fafafa 100%);
+    font-family: 'Ubuntu Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+    background: linear-gradient(135deg, #0a0f0a 0%, #1a1f1a 50%, #0f140f 100%);
     background-attachment: fixed;
   }
 }
 
 @layer components {
-  .ubuntu-header {
-    background: linear-gradient(90deg, #e95420 0%, #dd4814 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(233, 84, 32, 0.3);
+  .kali-header {
+    background: linear-gradient(90deg, #00ff41 0%, #00cc33 100%);
+    color: black;
+    box-shadow: 0 2px 8px rgba(0, 255, 65, 0.3);
   }
   
-  .ubuntu-panel {
-    background: #ffffff;
-    border: 1px solid #e6e6e6;
-    border-radius: 8px;
+  .kali-panel {
+    background: rgba(26, 31, 26, 0.95);
+    border: 1px solid #00ff41;
+    border-radius: 4px;
     box-shadow: 
-      0 2px 8px rgba(0, 0, 0, 0.08),
-      0 1px 2px rgba(0, 0, 0, 0.04);
+      0 0 10px rgba(0, 255, 65, 0.2),
+      inset 0 1px 0 rgba(0, 255, 65, 0.1);
     transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
   }
   
-  .ubuntu-panel:hover {
+  .kali-panel:hover {
     box-shadow: 
-      0 4px 16px rgba(0, 0, 0, 0.12),
-      0 2px 4px rgba(0, 0, 0, 0.06);
-    transform: translateY(-1px);
+      0 0 20px rgba(0, 255, 65, 0.4),
+      inset 0 1px 0 rgba(0, 255, 65, 0.2);
+    border-color: #00ff41;
   }
   
-  .ubuntu-button {
-    background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
-    border: 1px solid #d4d4d4;
-    border-radius: 6px;
-    color: #2c2c2c;
+  .kali-button {
+    background: linear-gradient(180deg, #1a1f1a 0%, #0f140f 100%);
+    border: 1px solid #00ff41;
+    border-radius: 4px;
+    color: #00ff41;
     transition: all 0.2s ease;
-    font-weight: 400;
+    font-weight: 500;
+    font-family: 'Ubuntu Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
   
-  .ubuntu-button:hover {
-    background: linear-gradient(180deg, #f5f5f5 0%, #ebebeb 100%);
-    border-color: #b8b8b8;
+  .kali-button:hover {
+    background: linear-gradient(180deg, #00ff41 0%, #00cc33 100%);
+    color: black;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
     transform: translateY(-1px);
   }
   
-  .ubuntu-button:active {
-    background: linear-gradient(180deg, #ebebeb 0%, #d4d4d4 100%);
+  .kali-button:active {
     transform: translateY(0);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
   }
   
-  .ubuntu-button.primary {
-    background: linear-gradient(180deg, #e95420 0%, #dd4814 100%);
-    border-color: #dd4814;
+  .kali-button.danger {
+    border-color: #ff0040;
+    color: #ff0040;
+  }
+  
+  .kali-button.danger:hover {
+    background: linear-gradient(180deg, #ff0040 0%, #cc0033 100%);
     color: white;
+    box-shadow: 0 0 15px rgba(255, 0, 64, 0.5);
   }
   
-  .ubuntu-button.primary:hover {
-    background: linear-gradient(180deg, #dd4814 0%, #d1440f 100%);
-    border-color: #d1440f;
-  }
-  
-  .ubuntu-dock {
-    background: rgba(46, 52, 54, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-  
-  .ubuntu-dock-item {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .ubuntu-dock-item:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-  }
-  
-  .ubuntu-dock-item.active {
-    background: rgba(233, 84, 32, 0.3);
-    border-color: rgba(233, 84, 32, 0.5);
-  }
-  
-  .ubuntu-topbar {
-    background: rgba(46, 52, 54, 0.98);
-    backdrop-filter: blur(10px);
-    color: white;
-    height: 32px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .ubuntu-window {
-    background: #ffffff;
-    border-radius: 8px;
+  .kali-terminal {
+    background: rgba(10, 15, 10, 0.98);
+    border: 1px solid #00ff41;
+    border-radius: 4px;
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.12),
-      0 2px 8px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e6e6e6;
+      0 0 20px rgba(0, 255, 65, 0.3),
+      inset 0 0 50px rgba(0, 0, 0, 0.5);
+    font-family: 'Ubuntu Mono', monospace;
   }
   
-  .ubuntu-window-header {
-    background: linear-gradient(180deg, #f7f7f7 0%, #eeeeee 100%);
-    border-bottom: 1px solid #d4d4d4;
-    border-radius: 8px 8px 0 0;
-    height: 40px;
+  .kali-terminal-header {
+    background: linear-gradient(180deg, #2a2f2a 0%, #1a1f1a 100%);
+    border-bottom: 1px solid #00ff41;
+    border-radius: 4px 4px 0 0;
+    height: 32px;
     display: flex;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 12px;
+    color: #00ff41;
+    font-size: 12px;
+    font-weight: bold;
   }
   
-  .ubuntu-window-controls {
+  .kali-window-controls {
     display: flex;
-    gap: 8px;
+    gap: 6px;
   }
   
-  .ubuntu-window-control {
+  .kali-window-control {
     width: 12px;
     height: 12px;
-    border-radius: 50%;
-    border: none;
+    border-radius: 2px;
+    border: 1px solid;
     cursor: pointer;
+    transition: all 0.2s ease;
   }
   
-  .ubuntu-window-control.close {
-    background: #e95420;
+  .kali-window-control.close {
+    background: #ff0040;
+    border-color: #ff0040;
   }
   
-  .ubuntu-window-control.minimize {
-    background: #f99b11;
+  .kali-window-control.minimize {
+    background: #ffaa00;
+    border-color: #ffaa00;
   }
   
-  .ubuntu-window-control.maximize {
-    background: #73a839;
+  .kali-window-control.maximize {
+    background: #00ff41;
+    border-color: #00ff41;
   }
   
-  .ubuntu-sidebar {
-    background: #f7f7f7;
-    border-right: 1px solid #e6e6e6;
+  .kali-window-control:hover {
+    box-shadow: 0 0 8px currentColor;
   }
   
-  .ubuntu-sidebar-item {
+  .kali-sidebar {
+    background: rgba(10, 15, 10, 0.98);
+    border-right: 1px solid #00ff41;
+    backdrop-filter: blur(10px);
+  }
+  
+  .kali-sidebar-item {
     background: transparent;
-    border-radius: 6px;
+    border-radius: 4px;
     margin: 2px 8px;
     padding: 8px 12px;
     transition: all 0.2s ease;
-    color: #2c2c2c;
+    color: #00ff41;
+    border: 1px solid transparent;
+    font-family: 'Ubuntu Mono', monospace;
   }
   
-  .ubuntu-sidebar-item:hover {
-    background: rgba(233, 84, 32, 0.1);
-    color: #e95420;
+  .kali-sidebar-item:hover {
+    background: rgba(0, 255, 65, 0.1);
+    border-color: #00ff41;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
   }
   
-  .ubuntu-sidebar-item.active {
-    background: #e95420;
-    color: white;
+  .kali-sidebar-item.active {
+    background: rgba(0, 255, 65, 0.2);
+    border-color: #00ff41;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
   }
   
-  .ubuntu-progress {
-    background: #e6e6e6;
+  .kali-progress {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00ff41;
     border-radius: 4px;
     overflow: hidden;
   }
   
-  .ubuntu-progress-bar {
-    background: linear-gradient(90deg, #e95420 0%, #f99b11 100%);
+  .kali-progress-bar {
+    background: linear-gradient(90deg, #00ff41 0%, #00cc33 100%);
     transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
   }
   
-  .ubuntu-badge {
-    background: rgba(233, 84, 32, 0.1);
-    color: #e95420;
-    border: 1px solid rgba(233, 84, 32, 0.2);
-    border-radius: 16px;
+  .kali-badge {
+    background: rgba(0, 255, 65, 0.2);
+    color: #00ff41;
+    border: 1px solid #00ff41;
+    border-radius: 4px;
     padding: 2px 8px;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: 'Ubuntu Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
   
-  .ubuntu-badge.success {
-    background: rgba(115, 168, 57, 0.1);
-    color: #73a839;
-    border-color: rgba(115, 168, 57, 0.2);
+  .kali-badge.success {
+    background: rgba(0, 255, 65, 0.2);
+    color: #00ff41;
+    border-color: #00ff41;
   }
   
-  .ubuntu-badge.warning {
-    background: rgba(249, 155, 17, 0.1);
-    color: #f99b11;
-    border-color: rgba(249, 155, 17, 0.2);
+  .kali-badge.warning {
+    background: rgba(255, 170, 0, 0.2);
+    color: #ffaa00;
+    border-color: #ffaa00;
   }
   
-  .ubuntu-badge.error {
-    background: rgba(204, 0, 0, 0.1);
-    color: #cc0000;
-    border-color: rgba(204, 0, 0, 0.2);
+  .kali-badge.error {
+    background: rgba(255, 0, 64, 0.2);
+    color: #ff0040;
+    border-color: #ff0040;
   }
   
-  .ubuntu-terminal {
-    background: #2c2c2c;
-    color: #f5f5f5;
-    border-radius: 8px;
-    font-family: 'Ubuntu Mono', 'Courier New', monospace;
+  .kali-badge.critical {
+    background: rgba(204, 0, 0, 0.3);
+    color: #ff0000;
+    border-color: #ff0000;
+    animation: kali-pulse 2s ease-in-out infinite;
   }
   
-  .ubuntu-workspace {
-    background: #fafafa;
+  .kali-topbar {
+    background: rgba(10, 15, 10, 0.98);
+    backdrop-filter: blur(10px);
+    color: #00ff41;
+    height: 28px;
+    border-bottom: 1px solid #00ff41;
+    box-shadow: 0 2px 10px rgba(0, 255, 65, 0.2);
+  }
+  
+  .kali-dock {
+    background: rgba(10, 15, 10, 0.98);
+    backdrop-filter: blur(15px);
+    border: 1px solid #00ff41;
+    border-radius: 4px;
+    box-shadow: 
+      0 0 20px rgba(0, 255, 65, 0.3),
+      inset 0 1px 0 rgba(0, 255, 65, 0.1);
+  }
+  
+  .kali-dock-item {
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    color: #00ff41;
+  }
+  
+  .kali-dock-item:hover {
+    background: rgba(0, 255, 65, 0.2);
+    border-color: #00ff41;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+    transform: scale(1.05);
+  }
+  
+  .kali-dock-item.active {
+    background: rgba(0, 255, 65, 0.3);
+    border-color: #00ff41;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+  }
+  
+  .kali-workspace {
+    background: #0a0f0a;
     background-image: 
-      radial-gradient(circle at 40px 40px, rgba(233, 84, 32, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+      linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .kali-glow {
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+  }
+  
+  .kali-text-glow {
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+  }
+  
+  .kali-hacker-text {
+    font-family: 'Ubuntu Mono', monospace;
+    color: #00ff41;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
   }
 }
 
-/* Ubuntu animations */
-@keyframes ubuntu-glow {
-  0%, 100% { box-shadow: 0 0 5px rgba(233, 84, 32, 0.3); }
-  50% { box-shadow: 0 0 20px rgba(233, 84, 32, 0.6); }
+/* Kali Linux animations */
+@keyframes kali-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    opacity: 1;
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    opacity: 0.8;
+  }
 }
 
-.ubuntu-glow {
-  animation: ubuntu-glow 2s ease-in-out infinite;
+@keyframes kali-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
 }
 
-/* Ubuntu scrollbar */
+@keyframes kali-scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.kali-pulse {
+  animation: kali-pulse 2s ease-in-out infinite;
+}
+
+.kali-flicker {
+  animation: kali-flicker 3s ease-in-out infinite;
+}
+
+/* Kali Linux scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f7f7f7;
-  border-radius: 6px;
+  background: #0a0f0a;
+  border: 1px solid #00ff41;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #e95420 0%, #dd4814 100%);
-  border-radius: 6px;
-  border: 2px solid #f7f7f7;
+  background: linear-gradient(180deg, #00ff41 0%, #00cc33 100%);
+  border-radius: 2px;
+  border: 1px solid #00ff41;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #dd4814 0%, #d1440f 100%);
+  background: linear-gradient(180deg, #00cc33 0%, #009926 100%);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
 }
 
 ::-webkit-scrollbar-corner {
-  background: #f7f7f7;
+  background: #0a0f0a;
+}
+
+/* Terminal cursor effect */
+.terminal-cursor::after {
+  content: '█';
+  color: #00ff41;
+  animation: kali-flicker 1s ease-in-out infinite;
 }
