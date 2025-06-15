@@ -3,48 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Network-themed design system with tech-focused colors and gradients */
+/* EVE-NG inspired design system with dark terminal aesthetics */
 
 @layer base {
   :root {
-    --background: 220 15% 6%;
+    --background: 213 27% 8%;
     --foreground: 210 40% 98%;
 
-    --card: 220 15% 9%;
+    --card: 213 27% 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 15% 9%;
+    --popover: 213 27% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 220 15% 6%;
+    --primary: 217 91% 59%;
+    --primary-foreground: 213 27% 8%;
 
-    --secondary: 220 15% 15%;
+    --secondary: 213 27% 14%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 15% 15%;
+    --muted: 213 27% 14%;
     --muted-foreground: 217 10% 65%;
 
-    --accent: 142 76% 36%;
-    --accent-foreground: 220 15% 6%;
+    --accent: 200 98% 48%;
+    --accent-foreground: 213 27% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 217 91% 60%;
+    --border: 213 27% 18%;
+    --input: 213 27% 18%;
+    --ring: 217 91% 59%;
 
-    --radius: 0.75rem;
+    --radius: 0.25rem;
 
-    --sidebar-background: 220 15% 6%;
+    --sidebar-background: 213 27% 8%;
     --sidebar-foreground: 217 10% 65%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 220 15% 6%;
-    --sidebar-accent: 220 15% 15%;
+    --sidebar-primary: 217 91% 59%;
+    --sidebar-primary-foreground: 213 27% 8%;
+    --sidebar-accent: 213 27% 14%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-border: 213 27% 18%;
+    --sidebar-ring: 217 91% 59%;
   }
 }
 
@@ -54,32 +54,76 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    background-image: 
-      radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 40% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
+    @apply bg-background text-foreground font-mono;
+    background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 50%, #0f1419 100%);
+    background-attachment: fixed;
   }
 }
 
 @layer components {
-  .circuit-pattern {
-    background-image: 
-      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-      linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-  
-  .network-glow {
+  .eve-terminal {
+    background: linear-gradient(145deg, rgba(15, 20, 25, 0.95), rgba(26, 31, 46, 0.95));
+    border: 1px solid rgba(59, 130, 246, 0.3);
     box-shadow: 
-      0 0 20px rgba(59, 130, 246, 0.3),
-      0 0 40px rgba(59, 130, 246, 0.1);
+      0 0 20px rgba(59, 130, 246, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
   
-  .tech-gradient {
-    background: linear-gradient(135deg, 
-      rgba(59, 130, 246, 0.1) 0%, 
-      rgba(34, 197, 94, 0.1) 50%, 
-      rgba(249, 115, 22, 0.1) 100%);
+  .eve-grid {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
+  
+  .eve-glow {
+    box-shadow: 
+      0 0 20px rgba(59, 130, 246, 0.4),
+      0 0 40px rgba(59, 130, 246, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .eve-header-bar {
+    background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 50%, #1e3a8a 100%);
+    height: 3px;
+    position: relative;
+  }
+  
+  .eve-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+    animation: pulse 2s infinite;
+  }
+  
+  .eve-terminal-text {
+    font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+    color: #00ff41;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  }
+  
+  .eve-blue-text {
+    color: #3b82f6;
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* Custom scrollbar to match EVE-NG */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 20, 25, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
 }
