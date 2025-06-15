@@ -11,8 +11,8 @@ import {
   Cable, 
   Router, 
   EthernetPort,
-  Monitor,
-  Smartphone,
+  Antenna,
+  WifiHigh,
   Mail,
   Phone,
   MapPin,
@@ -20,376 +20,258 @@ import {
   Download,
   Github,
   Linkedin,
-  Settings,
+  Terminal,
   Activity,
   Zap,
-  Terminal,
-  Folder,
-  FileText,
-  Search,
-  Grid3X3,
-  Minimize2,
-  Square,
-  X,
-  Menu,
-  Home,
-  Calendar,
-  Clock,
-  Shield,
-  Eye,
-  Skull,
-  Lock,
-  Unlock,
-  Bug,
-  Target,
-  Crosshair
+  Settings
 } from "lucide-react";
 
 const Index = () => {
   const skills = [
-    { name: "Penetration Testing", level: 95, icon: Target, status: "active", category: "Offensive" },
-    { name: "Network Analysis", level: 92, icon: Network, status: "active", category: "Recon" },
-    { name: "Vulnerability Assessment", level: 88, icon: Bug, status: "active", category: "Assessment" },
-    { name: "Wireless Hacking", level: 85, icon: Wifi, status: "active", category: "Wireless" },
-    { name: "Social Engineering", level: 80, icon: Eye, status: "partial", category: "Human" },
-    { name: "Forensic Analysis", level: 78, icon: Search, status: "inactive", category: "Forensics" },
+    { name: "Network Topology Design", level: 95, icon: Network, status: "online" },
+    { name: "Cisco IOS/NX-OS", level: 90, icon: Router, status: "online" },
+    { name: "Security Implementation", level: 85, icon: Wifi, status: "online" },
+    { name: "Virtual Lab Management", level: 88, icon: Server, status: "online" },
+    { name: "Wireless Controllers", level: 82, icon: WifiHigh, status: "online" },
+    { name: "Physical Infrastructure", level: 78, icon: Cable, status: "maintenance" },
   ];
 
   const projects = [
     {
-      title: "Corporate Pentest Lab",
-      description: "Full-scale penetration testing environment with multi-tier network architecture and various attack vectors.",
-      tools: ["Nmap", "Metasploit", "Burp Suite", "Wireshark", "John", "Hashcat"],
-      status: "Pwned",
-      vulnerabilities: 47,
-      severity: ["Critical", "High", "Medium", "Low"]
+      title: "Enterprise Core Network",
+      description: "Multi-site MPLS network with BGP routing and redundant paths. Implemented using Cisco ASR routers and Nexus switches.",
+      tech: ["MPLS", "BGP", "OSPF", "QoS"],
+      status: "Active",
+      nodes: 24,
+      uptime: "99.9%"
     },
     {
-      title: "Wireless Security Assessment",
-      description: "Enterprise WiFi security testing including WPA2/WPA3 cracking, evil twin attacks, and rogue AP detection.",
-      tools: ["Aircrack-ng", "Reaver", "Wifite", "Kismet", "Hostapd"],
-      status: "Scanning",
-      vulnerabilities: 23,
-      severity: ["High", "Medium", "Low"]
+      title: "Data Center Virtualization",
+      description: "VMware vSphere environment with distributed switching and network automation using Python and Ansible.",
+      tech: ["VMware", "vSphere", "Python", "Ansible"],
+      status: "Running",
+      nodes: 18,
+      uptime: "99.7%"
     },
     {
-      title: "Web Application Security",
-      description: "OWASP Top 10 vulnerability testing with custom exploit development and payload creation.",
-      tools: ["SQLmap", "Nikto", "OWASP ZAP", "Gobuster", "Hydra"],
-      status: "Exploiting",
-      vulnerabilities: 31,
-      severity: ["Critical", "High", "Medium"]
+      title: "SD-WAN Implementation", 
+      description: "Cisco SD-WAN deployment across 15 branch offices with centralized policy management and traffic optimization.",
+      tech: ["SD-WAN", "vEdge", "vManage", "Orchestration"],
+      status: "Deployed",
+      nodes: 15,
+      uptime: "99.8%"
     }
   ];
 
   const certifications = [
-    { name: "OSCP", status: "Valid", expiry: "2025-03", progress: 100 },
-    { name: "CEH", status: "Valid", expiry: "2025-08", progress: 100 },
-    { name: "CISSP", status: "Valid", expiry: "2024-12", progress: 90 },
-    { name: "OSWE", status: "In Progress", expiry: "2025-11", progress: 65 }
+    { name: "CCNA", status: "Valid", expiry: "2025-03" },
+    { name: "CompTIA Network+", status: "Valid", expiry: "2025-08" },
+    { name: "CWNA", status: "Valid", expiry: "2024-12" },
+    { name: "CompTIA Security+", status: "Valid", expiry: "2025-11" }
   ];
 
   return (
-    <div className="min-h-screen bg-background kali-workspace">
-      {/* Kali Top Bar */}
-      <div className="kali-topbar">
-        <div className="flex items-center justify-between px-4 h-full">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 text-sm font-bold kali-hacker-text">
-              <Skull className="h-4 w-4 text-primary" />
-              <span className="terminal-cursor">root@kali-portfolio</span>
+    <div className="min-h-screen bg-background eve-grid">
+      {/* EVE-NG Style Header Bar */}
+      <div className="eve-header-bar"></div>
+
+      {/* Main Interface Container */}
+      <div className="container mx-auto px-4 py-6">
+        
+        {/* Terminal Header */}
+        <div className="eve-terminal rounded-lg p-6 mb-8">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="flex gap-2">
+              <div className="eve-status-dot"></div>
+              <div className="eve-status-dot" style={{background: '#f59e0b', boxShadow: '0 0 10px #f59e0b'}}></div>
+              <div className="eve-status-dot" style={{background: '#ef4444', boxShadow: '0 0 10px #ef4444'}}></div>
             </div>
+            <div className="flex-1">
+              <div className="text-sm text-muted-foreground">EVE-NG Network Engineer Portfolio v2.4.1</div>
+            </div>
+            <Terminal className="text-primary w-6 h-6" />
           </div>
           
-          <div className="flex items-center gap-2 text-xs kali-hacker-text">
-            <Activity className="h-3 w-3" />
-            <span>{new Date().toLocaleTimeString()}</span>
-            <span>•</span>
-            <span className="kali-badge success">ONLINE</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex h-[calc(100vh-28px)]">
-        {/* Kali Dock/Tools */}
-        <div className="w-16 kali-sidebar flex flex-col items-center py-4 gap-3">
-          <div className="kali-dock-item active p-3 cursor-pointer" title="Home Terminal">
-            <Terminal className="h-5 w-5" />
-          </div>
-          <div className="kali-dock-item p-3 cursor-pointer" title="Metasploit">
-            <Target className="h-5 w-5" />
-          </div>
-          <div className="kali-dock-item p-3 cursor-pointer" title="Wireshark">
-            <Network className="h-5 w-5" />
-          </div>
-          <div className="kali-dock-item p-3 cursor-pointer" title="Burp Suite">
-            <Bug className="h-5 w-5" />
-          </div>
-          <div className="kali-dock-item p-3 cursor-pointer" title="Settings">
-            <Settings className="h-5 w-5" />
-          </div>
-        </div>
-
-        {/* Tool Navigation Panel */}
-        <div className="w-64 kali-sidebar border-r">
-          <div className="p-4">
-            <h3 className="font-bold text-sm mb-3 text-primary flex items-center gap-2 kali-hacker-text">
-              <Shield className="h-4 w-4" />
-              HACKING TOOLS
-            </h3>
-            <div className="space-y-1">
-              <div className="kali-sidebar-item active flex items-center gap-2 text-sm">
-                <Target className="h-4 w-4" />
-                <span>Metasploit</span>
-              </div>
-              <div className="kali-sidebar-item flex items-center gap-2 text-sm">
-                <Network className="h-4 w-4" />
-                <span>Nmap Scanner</span>
-              </div>
-              <div className="kali-sidebar-item flex items-center gap-2 text-sm">
-                <Wifi className="h-4 w-4" />
-                <span>Aircrack-ng</span>
-              </div>
-              <div className="kali-sidebar-item flex items-center gap-2 text-sm">
-                <Bug className="h-4 w-4" />
-                <span>Burp Suite</span>
-              </div>
-              <div className="kali-sidebar-item flex items-center gap-2 text-sm">
-                <Eye className="h-4 w-4" />
-                <span>Social Engineer</span>
-              </div>
+          <div className="space-y-3">
+            <div className="eve-terminal-text text-sm">
+              admin@portfolio:~$ whoami
+            </div>
+            <div className="text-2xl font-bold eve-blue-text">
+              Senior Network Engineer
+            </div>
+            <div className="text-lg text-muted-foreground font-mono">
+              Building scalable network infrastructures with enterprise-grade solutions
+            </div>
+            <div className="eve-terminal-text text-sm">
+              admin@portfolio:~$ status --system
+            </div>
+            <div className="flex gap-6 text-sm">
+              <span className="text-green-400">● ONLINE</span>
+              <span className="text-blue-400">Nodes: 47</span>
+              <span className="text-green-400">Uptime: 99.9%</span>
+              <span className="text-blue-400">Load: 0.45</span>
             </div>
           </div>
         </div>
 
-        {/* Main Content Area */}
-        <div className="flex-1 p-6 overflow-auto">
-          {/* Main Terminal Window */}
-          <div className="kali-terminal mb-6">
-            <div className="kali-terminal-header">
-              <div className="kali-window-controls">
-                <button className="kali-window-control close"></button>
-                <button className="kali-window-control minimize"></button>
-                <button className="kali-window-control maximize"></button>
-              </div>
-              <div className="ml-4 flex-1 font-bold text-xs">
-                root@kali:~/pentest-portfolio# 
-              </div>
-            </div>
-            
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="kali-dock-item p-3 kali-glow">
-                  <Skull className="h-6 w-6" />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-primary kali-text-glow kali-hacker-text">ETHICAL HACKER & PENETRATION TESTER</h1>
-                  <p className="text-muted-foreground kali-hacker-text">
-                    > Specialized in offensive security, vulnerability assessment, and network penetration testing
-                  </p>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-4 gap-4 text-sm kali-hacker-text">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary kali-text-glow">147</div>
-                  <div className="text-muted-foreground">Systems Pwned</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-green-400">CVE-2024</div>
-                  <div className="text-muted-foreground">Vulns Found</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-400">0-DAY</div>
-                  <div className="text-muted-foreground">Exploits</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-red-400 kali-pulse">CRITICAL</div>
-                  <div className="text-muted-foreground">Severity</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Action Buttons */}
+        <div className="flex flex-wrap gap-4 mb-8">
+          <Button className="eve-glow bg-primary hover:bg-primary/90">
+            <Download className="mr-2 h-4 w-4" />
+            Download CV
+          </Button>
+          <Button variant="outline" className="border-primary/50 hover:bg-primary/10">
+            <Mail className="mr-2 h-4 w-4" />
+            Contact
+          </Button>
+          <Button variant="outline" className="border-primary/50 hover:bg-primary/10">
+            <Settings className="mr-2 h-4 w-4" />
+            Lab Access
+          </Button>
+        </div>
 
-          {/* Skills Section */}
-          <div className="mb-6">
-            <h2 className="text-xl font-bold mb-4 text-primary flex items-center gap-2 kali-hacker-text">
-              <Crosshair className="h-5 w-5" />
-              ATTACK VECTORS & EXPLOIT TECHNIQUES
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {skills.map((skill, index) => (
-                <div key={index} className="kali-panel p-4">
+        {/* Skills Grid */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-6 eve-blue-text flex items-center gap-2">
+            <Activity className="h-6 w-6" />
+            System Resources & Skills
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {skills.map((skill, index) => (
+              <Card key={index} className="eve-terminal border-primary/30">
+                <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
                       <skill.icon className="h-5 w-5 text-primary" />
-                      <span className="font-bold text-sm kali-hacker-text">{skill.name}</span>
+                      <span className="font-mono text-sm">{skill.name}</span>
                     </div>
-                    <span className={`kali-badge ${skill.status === 'active' ? 'success' : skill.status === 'partial' ? 'warning' : 'error'}`}>
-                      {skill.status}
-                    </span>
+                    <div className={`w-2 h-2 rounded-full ${skill.status === 'online' ? 'bg-green-400' : 'bg-yellow-400'}`}></div>
                   </div>
-                  <div className="kali-progress h-2 mb-2">
-                    <div 
-                      className="kali-progress-bar h-full" 
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
+                  <Progress value={skill.level} className="h-2 mb-2" />
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>{skill.level}%</span>
+                    <span className="font-mono">{skill.status}</span>
                   </div>
-                  <div className="flex justify-between text-xs text-muted-foreground kali-hacker-text">
-                    <span>{skill.level}% Mastery</span>
-                    <span>{skill.category}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Tabbed Content */}
-          <div className="kali-terminal">
-            <div className="kali-terminal-header">
-              <div className="kali-window-controls">
-                <button className="kali-window-control close"></button>
-                <button className="kali-window-control minimize"></button>
-                <button className="kali-window-control maximize"></button>
-              </div>
-              <div className="ml-4 flex-1 font-bold text-xs">
-                msfconsole - Penetration Testing Framework
-              </div>
-            </div>
-            
-            <Tabs defaultValue="projects" className="p-6">
-              <TabsList className="kali-panel border">
-                <TabsTrigger value="projects" className="kali-button">ACTIVE OPERATIONS</TabsTrigger>
-                <TabsTrigger value="certs" className="kali-button">CERTIFICATIONS</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="projects" className="space-y-4 mt-4">
-                <h3 className="text-lg font-bold text-primary flex items-center gap-2 kali-hacker-text">
-                  <Target className="h-5 w-5" />
-                  CURRENT PENETRATION TESTS
-                </h3>
-                {projects.map((project, index) => (
-                  <div key={index} className="kali-panel p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h4 className="text-primary text-lg font-bold kali-hacker-text">{project.title}</h4>
-                        <p className="text-muted-foreground mt-2 kali-hacker-text">
-                          > {project.description}
-                        </p>
-                      </div>
-                      <div className="text-right space-y-1">
-                        <span className={`kali-badge ${project.status === 'Pwned' ? 'success' : project.status === 'Exploiting' ? 'critical' : 'warning'}`}>
-                          {project.status}
-                        </span>
-                        <div className="text-sm text-muted-foreground kali-hacker-text">{project.vulnerabilities} vulnerabilities</div>
-                      </div>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h5 className="font-bold text-sm mb-2 kali-hacker-text">TOOLS USED:</h5>
-                        <div className="space-y-1">
-                          {project.tools.map((tool, toolIndex) => (
-                            <div key={toolIndex} className="text-xs text-primary flex items-center gap-2 kali-hacker-text">
-                              <div className="w-2 h-2 bg-primary rounded-full kali-glow"></div>
-                              {tool}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <div>
-                        <h5 className="font-bold text-sm mb-2 kali-hacker-text">SEVERITY LEVELS:</h5>
-                        <div className="flex flex-wrap gap-1">
-                          {project.severity.map((severity, severityIndex) => (
-                            <span key={severityIndex} className={`kali-badge text-xs ${severity === 'Critical' ? 'critical' : severity === 'High' ? 'error' : severity === 'Medium' ? 'warning' : 'success'}`}>
-                              {severity}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </TabsContent>
-              
-              <TabsContent value="certs" className="space-y-4 mt-4">
-                <h3 className="text-lg font-bold text-primary flex items-center gap-2 kali-hacker-text">
-                  <Shield className="h-5 w-5" />
-                  SECURITY CERTIFICATIONS
-                </h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {certifications.map((cert, index) => (
-                    <div key={index} className="kali-panel p-4">
-                      <div className="flex justify-between items-start mb-3">
-                        <div>
-                          <div className="font-bold text-primary kali-hacker-text">{cert.name}</div>
-                          <div className="text-sm text-muted-foreground kali-hacker-text">Expires: {cert.expiry}</div>
-                        </div>
-                        <span className={`kali-badge ${cert.status === 'Valid' ? 'success' : 'warning'}`}>
-                          {cert.status}
-                        </span>
-                      </div>
-                      <div className="kali-progress h-2 mb-1">
-                        <div 
-                          className="kali-progress-bar h-full" 
-                          style={{ width: `${cert.progress}%` }}
-                        ></div>
-                      </div>
-                      <div className="text-xs text-muted-foreground kali-hacker-text">
-                        {cert.progress}% Complete
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </TabsContent>
-            </Tabs>
-          </div>
-
-          {/* Contact Information */}
-          <div className="kali-panel p-6 mt-6">
-            <h3 className="text-lg font-bold text-primary flex items-center gap-2 mb-4 kali-hacker-text">
-              <Lock className="h-5 w-5" />
-              SECURE CONTACT PROTOCOL
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground kali-hacker-text">
-                  <Mail className="h-4 w-4 text-primary" />
-                  <span>Encrypted Email:</span>
-                </div>
-                <div className="font-bold text-primary kali-hacker-text">hacker@kali.secure</div>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground kali-hacker-text">
-                  <Phone className="h-4 w-4 text-primary" />
-                  <span>Secure Line:</span>
-                </div>
-                <div className="font-bold text-primary kali-hacker-text">+1.555.HACK.3R</div>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground kali-hacker-text">
-                  <MapPin className="h-4 w-4 text-primary" />
-                  <span>Location:</span>
-                </div>
-                <div className="font-bold text-primary kali-hacker-text">Undisclosed, VPN</div>
-              </div>
-            </div>
-            
-            <div className="flex gap-3 mt-6 pt-4 border-t border-border">
-              <button className="kali-button flex items-center gap-2 px-4 py-2">
-                <Github className="h-4 w-4" />
-                GITHUB
-              </button>
-              <button className="kali-button flex items-center gap-2 px-4 py-2">
-                <Linkedin className="h-4 w-4" />
-                LINKEDIN
-              </button>
-              <button className="kali-button danger flex items-center gap-2 px-4 py-2">
-                <Download className="h-4 w-4" />
-                DOWNLOAD PORTFOLIO
-              </button>
-            </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
+
+        {/* Projects & Topology */}
+        <Tabs defaultValue="topology" className="mb-8">
+          <TabsList className="grid w-full grid-cols-2 bg-secondary/50">
+            <TabsTrigger value="topology" className="font-mono">Network Topology</TabsTrigger>
+            <TabsTrigger value="certs" className="font-mono">Certifications</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="topology" className="space-y-4 mt-6">
+            <h3 className="text-xl font-bold eve-blue-text flex items-center gap-2">
+              <Network className="h-5 w-5" />
+              Active Network Projects
+            </h3>
+            {projects.map((project, index) => (
+              <Card key={index} className="eve-terminal border-primary/30 hover:border-primary/50 transition-colors">
+                <CardHeader>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <CardTitle className="text-primary font-mono">{project.title}</CardTitle>
+                      <CardDescription className="mt-2 text-muted-foreground">
+                        {project.description}
+                      </CardDescription>
+                    </div>
+                    <div className="text-right text-sm space-y-1">
+                      <div className="text-green-400 font-mono">● {project.status}</div>
+                      <div className="text-blue-400 font-mono">{project.nodes} nodes</div>
+                      <div className="text-green-400 font-mono">{project.uptime}</div>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, techIndex) => (
+                      <Badge key={techIndex} variant="outline" className="border-primary/50 text-primary font-mono text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </TabsContent>
+          
+          <TabsContent value="certs" className="space-y-4 mt-6">
+            <h3 className="text-xl font-bold eve-blue-text flex items-center gap-2">
+              <Zap className="h-5 w-5" />
+              Professional Certifications
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              {certifications.map((cert, index) => (
+                <Card key={index} className="eve-terminal border-primary/30">
+                  <CardContent className="p-4">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <div className="font-mono font-bold text-primary">{cert.name}</div>
+                        <div className="text-sm text-muted-foreground">Expires: {cert.expiry}</div>
+                      </div>
+                      <div className="text-green-400 font-mono text-sm">● {cert.status}</div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
+
+        {/* Contact Terminal */}
+        <Card className="eve-terminal border-primary/30">
+          <CardHeader>
+            <CardTitle className="eve-blue-text font-mono flex items-center gap-2">
+              <Terminal className="h-5 w-5" />
+              Connection Parameters
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <Mail className="h-4 w-4 text-primary" />
+                  <span className="font-mono text-muted-foreground">email:</span>
+                </div>
+                <div className="font-mono text-primary">engineer@network.lab</div>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <Phone className="h-4 w-4 text-primary" />
+                  <span className="font-mono text-muted-foreground">phone:</span>
+                </div>
+                <div className="font-mono text-primary">+1.555.NET.WORK</div>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <MapPin className="h-4 w-4 text-primary" />
+                  <span className="font-mono text-muted-foreground">location:</span>
+                </div>
+                <div className="font-mono text-primary">San Francisco, CA</div>
+              </div>
+            </div>
+            
+            <div className="flex gap-4 mt-6 pt-4 border-t border-primary/20">
+              <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
+                <Github className="mr-2 h-4 w-4" />
+                GitHub
+              </Button>
+              <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
+                <Linkedin className="mr-2 h-4 w-4" />
+                LinkedIn
+              </Button>
+              <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
+                <ExternalLink className="mr-2 h-4 w-4" />
+                Lab Portal
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
