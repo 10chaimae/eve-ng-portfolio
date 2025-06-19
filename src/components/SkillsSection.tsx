@@ -1,5 +1,5 @@
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { 
   Network, 
   Server, 
@@ -26,28 +26,21 @@ const SkillsSection = () => {
         <Activity className="h-6 w-6" />
         Skills and Technologies
       </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="flex flex-wrap gap-3">
         {skills.map((skill, index) => (
-          <Card key={index} className="eve-terminal border-primary/30">
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <div className="relative">
-                    <skill.icon className={`h-6 w-6 text-primary ${skill.status === 'online' ? 'animate-pulse' : 'animate-bounce'}`} />
-                    <div className="absolute -top-1 -right-1 w-3 h-3">
-                      <div className={`w-full h-full rounded-full ${skill.status === 'online' ? 'bg-green-400 animate-ping' : 'bg-yellow-400 animate-pulse'}`}></div>
-                    </div>
-                  </div>
-                  <span className="font-mono text-sm">{skill.name}</span>
-                </div>
-                <div className={`w-2 h-2 rounded-full ${skill.status === 'online' ? 'bg-green-400' : 'bg-yellow-400'}`}></div>
+          <Badge
+            key={index}
+            variant="outline"
+            className="eve-terminal border-primary/30 px-4 py-2 text-sm font-mono flex items-center gap-2 hover:bg-primary/10 transition-colors cursor-pointer"
+          >
+            <div className="relative">
+              <skill.icon className={`h-4 w-4 text-primary ${skill.status === 'online' ? 'animate-pulse' : 'animate-bounce'}`} />
+              <div className="absolute -top-1 -right-1 w-2 h-2">
+                <div className={`w-full h-full rounded-full ${skill.status === 'online' ? 'bg-green-400' : 'bg-yellow-400'}`}></div>
               </div>
-              <div className="flex justify-between text-xs text-muted-foreground">
-                <span className="font-mono">{skill.status}</span>
-                <span className="font-mono text-primary">ACTIVE</span>
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+            <span>{skill.name}</span>
+          </Badge>
         ))}
       </div>
     </div>
