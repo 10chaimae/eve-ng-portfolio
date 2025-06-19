@@ -1,8 +1,20 @@
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Terminal, Download, Mail, Settings } from "lucide-react";
+import CliTerminal from "./CliTerminal";
 
 const HeaderSection = () => {
+  const [isCliOpen, setIsCliOpen] = useState(false);
+
+  const handleNavigateToSection = (section: string) => {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsCliOpen(false);
+  };
+
   return (
     <>
       {/* Terminal Header */}
@@ -51,11 +63,21 @@ const HeaderSection = () => {
           <Mail className="mr-2 h-4 w-4" />
           Contact
         </Button>
-        <Button variant="outline" className="border-primary/50 hover:bg-primary/10">
-          <Settings className="mr-2 h-4 w-4" />
-          Lab Access
+        <Button 
+          variant="outline" 
+          className="border-primary/50 hover:bg-primary/10"
+          onClick={() => setIsCliOpen(true)}
+        >
+          <Terminal className="mr-2 h-4 w-4" />
+          Lab Access (CLI)
         </Button>
       </div>
+
+      <CliTerminal 
+        isOpen={isCliOpen}
+        onClose={() => setIsCliOpen(false)}
+        onNavigate={handleNavigateToSection}
+      />
     </>
   );
 };
