@@ -5,10 +5,20 @@ import {
   Mail,
   MapPin,
   Linkedin,
-  Terminal
+  Terminal,
+  Download
 } from "lucide-react";
 
 const ConnectSection = () => {
+  const handleContactClick = () => {
+    const email = "engineer@network.lab";
+    const subject = "Contact from Portfolio";
+    const body = "Hello,\n\nI would like to get in touch with you regarding...";
+    
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  };
+
   return (
     <div id="connect" className="mb-8">
       <Card className="eve-terminal border-primary/30">
@@ -37,6 +47,18 @@ const ConnectSection = () => {
           </div>
           
           <div className="flex gap-4 mt-6 pt-4 border-t border-primary/20">
+            <Button className="eve-glow bg-primary hover:bg-primary/90 font-mono">
+              <Download className="mr-2 h-4 w-4" />
+              Download CV
+            </Button>
+            <Button 
+              variant="outline" 
+              className="border-primary/50 hover:bg-primary/10 font-mono"
+              onClick={handleContactClick}
+            >
+              <Mail className="mr-2 h-4 w-4" />
+              Contact
+            </Button>
             <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
               <Linkedin className="mr-2 h-4 w-4" />
               LinkedIn

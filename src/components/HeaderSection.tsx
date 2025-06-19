@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Terminal, Download, Mail, Settings } from "lucide-react";
+import { Terminal } from "lucide-react";
 import CliTerminal from "./CliTerminal";
 
 const HeaderSection = () => {
@@ -53,16 +53,8 @@ const HeaderSection = () => {
         </div>
       </div>
 
-      {/* Action Buttons */}
+      {/* Action Button */}
       <div className="flex flex-wrap gap-4 mb-8">
-        <Button className="eve-glow bg-primary hover:bg-primary/90">
-          <Download className="mr-2 h-4 w-4" />
-          Download CV
-        </Button>
-        <Button variant="outline" className="border-primary/50 hover:bg-primary/10">
-          <Mail className="mr-2 h-4 w-4" />
-          Contact
-        </Button>
         <Button 
           variant="outline" 
           className="border-primary/50 hover:bg-primary/10"
