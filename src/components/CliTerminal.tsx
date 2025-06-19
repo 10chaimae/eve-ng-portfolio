@@ -19,22 +19,72 @@ const CliTerminal = ({ isOpen, onClose, onNavigate }: CliTerminalProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
+  const skillsData = [
+    { name: "Network Topology Design", status: "ONLINE", load: "0.23" },
+    { name: "Cisco IOS/NX-OS", status: "ONLINE", load: "0.15" },
+    { name: "Security Implementation", status: "ONLINE", load: "0.31" },
+    { name: "Virtual Lab Management", status: "ONLINE", load: "0.08" },
+    { name: "Wireless Controllers", status: "ONLINE", load: "0.19" },
+    { name: "Physical Infrastructure", status: "MAINTENANCE", load: "0.45" }
+  ];
+
   const commands = {
     help: () => [
       "Available commands:",
-      "  skills     - Navigate to Skills and Technologies",
+      "  skills     - Show Skills and Technologies status",
       "  projects   - Navigate to Network Projects", 
       "  education  - Navigate to Education section",
       "  experience - Navigate to Professional Experience",
-      "  certs      - Navigate to Certifications",
+      "  certs      - Show Certifications status",
       "  connect    - Navigate to Connect section",
       "  clear      - Clear terminal",
       "  exit       - Close terminal",
       ""
     ],
     skills: () => {
-      onNavigate("skills");
-      return ["Navigating to Skills and Technologies section...", ""];
+      const output = [
+        "=== SKILLS AND TECHNOLOGIES STATUS ===",
+        "",
+        "Scanning network infrastructure...",
+        "Loading skill modules...",
+        "",
+        "SKILL MODULE                 STATUS       LOAD    UPTIME",
+        "─────────────────────────────────────────────────────────",
+      ];
+      
+      skillsData.forEach(skill => {
+        const statusColor = skill.status === "ONLINE" ? "●" : "◐";
+        const paddedName = skill.name.padEnd(28, " ");
+        const paddedStatus = skill.status.padEnd(12, " ");
+        output.push(`${paddedName} ${statusColor} ${paddedStatus} ${skill.load}    99.9%`);
+      });
+      
+      output.push("");
+      output.push("Summary:");
+      output.push(`  Total modules: ${skillsData.length}`);
+      output.push(`  Online: ${skillsData.filter(s => s.status === "ONLINE").length}`);
+      output.push(`  Maintenance: ${skillsData.filter(s => s.status === "MAINTENANCE").length}`);
+      output.push(`  System health: OPTIMAL`);
+      output.push("");
+      
+      return output;
+    },
+    certs: () => {
+      return [
+        "=== PROFESSIONAL CERTIFICATIONS STATUS ===",
+        "",
+        "Validating certificates...",
+        "",
+        "CERTIFICATION            STATUS    EXPIRY      VALIDITY",
+        "─────────────────────────────────────────────────────",
+        "CCNA                     ● VALID   2025-03     ACTIVE",
+        "CompTIA Network+         ● VALID   2025-08     ACTIVE", 
+        "CWNA                     ● VALID   2024-12     ACTIVE",
+        "CompTIA Security+        ● VALID   2025-11     ACTIVE",
+        "",
+        "All certifications verified and current.",
+        ""
+      ];
     },
     projects: () => {
       onNavigate("projects");
@@ -47,10 +97,6 @@ const CliTerminal = ({ isOpen, onClose, onNavigate }: CliTerminalProps) => {
     experience: () => {
       onNavigate("experience");
       return ["Navigating to Professional Experience section...", ""];
-    },
-    certs: () => {
-      onNavigate("certs");
-      return ["Navigating to Certifications section...", ""];
     },
     connect: () => {
       onNavigate("connect");
