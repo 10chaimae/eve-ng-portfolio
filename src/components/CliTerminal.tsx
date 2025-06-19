@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Terminal } from "lucide-react";
 
 interface CliTerminalProps {
@@ -17,6 +17,7 @@ const CliTerminal = ({ isOpen, onClose, onNavigate }: CliTerminalProps) => {
     ""
   ]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const terminalRef = useRef<HTMLDivElement>(null);
 
   const commands = {
     help: () => [
@@ -83,17 +84,37 @@ const CliTerminal = ({ isOpen, onClose, onNavigate }: CliTerminalProps) => {
     setInput("");
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       handleCommand(input);
     }
   };
 
-  useEffect(() => {
-    if (isOpen && inputRef.current) {
+  const handleTerminalClick = () => {
+    if (inputRef.current) {
       inputRef.current.focus();
     }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      // Small delay to ensure dialog is fully rendered
+      const timer = setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
   }, [isOpen]);
+
+  useEffect(() => {
+    // Scroll to bottom when history updates
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [history]);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -103,9 +124,16 @@ const CliTerminal = ({ isOpen, onClose, onNavigate }: CliTerminalProps) => {
             <Terminal className="h-5 w-5" />
             Network Lab Terminal
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            Interactive CLI terminal for navigating the portfolio
+          </DialogDescription>
         </DialogHeader>
         
-        <div className="flex-1 p-4 pt-2 font-mono text-sm overflow-hidden">
+        <div 
+          ref={terminalRef}
+          className="flex-1 p-4 pt-2 font-mono text-sm overflow-hidden cursor-text"
+          onClick={handleTerminalClick}
+        >
           <div className="h-full flex flex-col">
             <div className="flex-1 overflow-y-auto space-y-1 mb-4">
               {history.map((line, index) => (
@@ -122,9 +150,13 @@ const CliTerminal = ({ isOpen, onClose, onNavigate }: CliTerminalProps) => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onKeyDown={handleKeyDown}
                 className="flex-1 bg-transparent border-none outline-none text-primary font-mono"
                 placeholder="Type a command..."
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="off"
+                spellCheck="false"
               />
             </div>
           </div>
