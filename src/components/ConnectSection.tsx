@@ -3,10 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
   Mail,
-  Phone,
   MapPin,
-  ExternalLink,
-  Github,
   Linkedin,
   Terminal
 } from "lucide-react";
@@ -22,20 +19,13 @@ const ConnectSection = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm">
                 <Mail className="h-4 w-4 text-primary" />
                 <span className="font-mono text-muted-foreground">email:</span>
               </div>
               <div className="font-mono text-primary">engineer@network.lab</div>
-            </div>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm">
-                <Phone className="h-4 w-4 text-primary" />
-                <span className="font-mono text-muted-foreground">phone:</span>
-              </div>
-              <div className="font-mono text-primary">+1.555.NET.WORK</div>
             </div>
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm">
@@ -48,16 +38,8 @@ const ConnectSection = () => {
           
           <div className="flex gap-4 mt-6 pt-4 border-t border-primary/20">
             <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
-              <Github className="mr-2 h-4 w-4" />
-              GitHub
-            </Button>
-            <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
               <Linkedin className="mr-2 h-4 w-4" />
               LinkedIn
-            </Button>
-            <Button variant="outline" size="sm" className="border-primary/50 hover:bg-primary/10 font-mono">
-              <ExternalLink className="mr-2 h-4 w-4" />
-              Lab Portal
             </Button>
           </div>
         </CardContent>
