@@ -87,16 +87,63 @@ const CliTerminal = ({ isOpen, onClose, onNavigate }: CliTerminalProps) => {
       ];
     },
     projects: () => {
-      onNavigate("projects");
-      return ["Navigating to Network Projects section...", ""];
+      return [
+        "=== ACTIVE NETWORK PROJECTS ===",
+        "",
+        "Scanning project repositories...",
+        "Loading project status...",
+        "",
+        "PROJECT NAME                     STATUS       COMPLETION  TECH STACK",
+        "─────────────────────────────────────────────────────────────────────",
+        "Enterprise Core Network          ● ACTIVE     85%         MPLS, BGP, OSPF, QoS",
+        "Data Center Virtualization       ● ACTIVE     92%         VMware, vSphere, Python",
+        "SD-WAN Implementation            ● ACTIVE     78%         SD-WAN, vEdge, vManage",
+        "",
+        "Summary:",
+        "  Total projects: 3",
+        "  Active: 3",
+        "  Average completion: 85%",
+        "  Next milestone: Q1 2024",
+        ""
+      ];
     },
     education: () => {
-      onNavigate("education");
-      return ["Navigating to Education section...", ""];
+      return [
+        "=== EDUCATION RECORDS ===",
+        "",
+        "Accessing academic database...",
+        "Verifying credentials...",
+        "",
+        "DEGREE/PROGRAM                           INSTITUTION                    STATUS     GPA",
+        "─────────────────────────────────────────────────────────────────────────────────",
+        "Bachelor of Science in Network Eng.     San Francisco State University ● COMPLETE 3.8/4.0",
+        "Associate Degree in Computer Networking  City College of San Francisco  ● COMPLETE 3.9/4.0",
+        "",
+        "Period: 2016-2022",
+        "Total Credits: 120",
+        "Academic Standing: Dean's List (4 semesters)",
+        ""
+      ];
     },
     experience: () => {
-      onNavigate("experience");
-      return ["Navigating to Professional Experience section...", ""];
+      return [
+        "=== PROFESSIONAL EXPERIENCE LOG ===",
+        "",
+        "Retrieving employment history...",
+        "Validating work records...",
+        "",
+        "POSITION                    COMPANY              PERIOD      STATUS",
+        "──────────────────────────────────────────────────────────────────",
+        "Senior Network Engineer     TechCorp Solutions   2022-Present ● CURRENT",
+        "Network Engineer            DataFlow Networks    2020-2022    ● COMPLETE",
+        "Junior Network Technician   NetSys Inc.          2018-2020    ● COMPLETE",
+        "",
+        "Total Experience: 6+ years",
+        "Current Role Duration: 2+ years",
+        "Career Progression: 100% promotion rate",
+        "Specializations: Enterprise Networks, SD-WAN, Security",
+        ""
+      ];
     },
     connect: () => {
       onNavigate("connect");
